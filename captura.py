@@ -1,5 +1,5 @@
 import cv2
- 
+
 arqCasc1 = 'haarcascade_frontalface_default.xml'
 arqCasc2 = 'haarcascade_eye.xml'
 faceCascade1 = cv2.CascadeClassifier(arqCasc1) #classificador para o rosto
@@ -31,7 +31,7 @@ while True:
     # Desenha um retangulo nas faces e olhos detectados
     for (x, y, w, h) in faces:
         cv2.rectangle(imagem, (x, y), (x+w, y+h), (0, 255, 0), 4)
- 
+        crop_rectangle = imagem[y: y+h, x: x+w].copy()
     for (x, y, w, h) in olhos:
         cv2.rectangle(imagem, (x, y), (x+w, y+h), (255, 0, 0), 2)
  
@@ -39,8 +39,8 @@ while True:
     
     k = cv2.waitKey(1)
 
-    if k%256 == 27:
-        # ESC pressed
+    if k & 0xFF == ord('q'):
+        # O trecho seguinte e apenas para parar o codigo e fechar a janela
         print("Escape hit, closing...")
         break
     elif k%256 == 32:
@@ -49,9 +49,9 @@ while True:
         cv2.imwrite(img_name, frame)
         print("{} written!".format(img_name))
         img_counter += 1
-    elif k & 0xFF == ord('q'):
-        #o trecho seguinte e apenas para parar o codigo e fechar a janela
-        break
- 
+    elif k & 0xFF == ord('c'):
+        # crop face
+        cv2.imshow('Result', crop_rectangle)
+
 webcam.release() #dispensa o uso da webcam
 cv2.destroyAllWindows() #fecha todas a janelas abertas
