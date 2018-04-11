@@ -1,6 +1,12 @@
 
 # Created by https://www.gitignore.io/api/vim,pydev,linux,python,opencv,pycharm,virtualenv,visualstudiocode
 
+# Images
+
+*.png
+*.jpeg
+*.jpg
+
 ### Linux ###
 *~
 
