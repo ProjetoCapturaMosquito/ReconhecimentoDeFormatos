@@ -6,7 +6,16 @@
 *.png
 *.jpeg
 *.jpg
+!3x4.png
 
+### Code ###
+# Visual Studio Code - https://code.visualstudio.com/
+.settings/
+.vscode/
+tsconfig.json
+jsconfig.json
+
+# End of https://www.gitignore.io/api/code
 ### Linux ###
 *~
 
